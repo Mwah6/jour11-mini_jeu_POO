@@ -21,15 +21,11 @@ def perform
     enemies_array = []
   enemies_array << player1 = Player.new("José")
   enemies_array << player2 = Player.new("Josianne")
-  # player1 = Player.new("José")
-  # player2 = Player.new("Josianne")
-  # enemies_array = []
-  # enemies_array << player1
-  # enemies_array << player2
 
   # Le combat :
   while human_player.life_points >0 && (player1.life_points > 0 || player2.life_points >0)
     puts human_player.show_state
+    # menu
     puts "Quelle action veux-tu effectuer ?
 
     a - chercher une meilleure arme
@@ -58,6 +54,7 @@ def perform
         puts "erreur de saisie : Veuillez entrer à nouveau votre choix :"
       end
     end
+    # fin du while si tous les enemis sont morts
     break if enemies_array.map { |enemy|  enemy = enemy.life_points}.all?(&(:negative?||:null?))
 
     puts "Les autres joueurs t'attaquent !"
@@ -75,39 +72,4 @@ end
 
 perform
 
-
-
-
-
-# player1 = Player.new("José")
-# player2 = HumanPlayer.new("Josianne")
-#
-# puts player1.show_state
-# puts player2.show_state
-
-# def perform
-# player1 = Player.new("José")
-# player2 = Player.new("Josianne")
-# puts player1.show_state
-# puts player2.show_state
-#
-# puts ""
-# puts "Passons à la phase d'attaque :"
-# puts ""
-#
-# puts "Josiane aura l'honneur d'attaquer la première :"
-# while player1.life_points >0 && player2.life_points >0
-#   # break if player2.life_points <= 0
-# player2.attacks(player1)
-# break if player1.life_points <= 0
-# player1.attacks(player2)
-# break if player2.life_points <= 0
-# puts " -> #{player1.show_state}"
-# puts " -> #{player2.show_state}"
-# puts ""
-# puts "Passons à la phase d'attaque suivante :"
-# puts ""
-# end
-# end
-# perform
 # binding.pry
